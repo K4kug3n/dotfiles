@@ -4,6 +4,8 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 declare -A SYMLINKS=(
     [".bash_aliases"]=".bash_aliases"
+
+    ["nvim"]=".config/nvim" 
 )
 
 # Loop through the SYMLINKS array and create symlinks
