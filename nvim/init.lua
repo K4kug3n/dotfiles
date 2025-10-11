@@ -560,37 +560,41 @@ require('lazy').setup({
     },
   },
 
+  { -- Snippet Engine
+    'L3MON4D3/LuaSnip',
+    version = '2.*',
+    build = (function()
+      if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+        return
+      end
+      return 'make install_jsregexp'
+    end)(),
+    dependencies = {
+      -- 'rafamadriz/friendly-snippets',
+    },
+    opts = {},
+    config = function(_, opts)
+      local ls = require 'luasnip'
+
+      -- Apply opts (if you later add options)
+      ls.config.set_config(opts)
+
+      -- Load your own Lua snippets
+      require('luasnip.loaders.from_lua').lazy_load {
+        paths = '~/.config/nvim/lua/user/snippets/',
+      }
+
+      -- (Optional) Load friendly-snippets if you enable it above
+      -- require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
-      -- Snippet Engine
-      {
-        'L3MON4D3/LuaSnip',
-        version = '2.*',
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-            return
-          end
-          return 'make install_jsregexp'
-        end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-        },
-        opts = {},
-      },
+      'L3MON4D3/LuaSnip',
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -723,6 +727,9 @@ require('lazy').setup({
   },
   {
     'lervag/vimtex',
+    config = function()
+      vim.g.vimtex_view_method = 'zathura'
+    end,
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -765,17 +772,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    This is the easiest way to modularize your config.
-  --
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
-  --
-  -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-  -- Or use telescope!
-  -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
-  -- you can continue same window with `<space>sr` which resumes last telescope search
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
