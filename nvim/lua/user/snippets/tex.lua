@@ -41,6 +41,29 @@ return {
     )
   ),
 
+  s(
+    { trig = 'mtin', snippetType = 'autosnippet' },
+    fmta('\\mintinline{<>}{<>}', {
+      i(1),
+      i(2),
+    })
+  ),
+
+  s(
+    { trig = 'mtenv', snippetType = 'autosnippet' },
+    fmta(
+      [[
+        \begin{minted}{<>}
+            <>
+        \end{minted}
+      ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
+
   s({ trig = ';a', snippetType = 'autosnippet' }, {
     t '\\alpha',
   }),
