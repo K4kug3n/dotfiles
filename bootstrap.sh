@@ -6,8 +6,9 @@ declare -A SYMLINKS=(
     [".bash_aliases"]=".bash_aliases"
 
     ["tmux"]=".config/tmux"
-    ["nvim"]=".config/nvim" 
-    ["sway"]=".config/sway" 
+    ["nvim"]=".config/nvim"
+    ["sway"]=".config/sway"
+    ["waybar"]=".config/waybar"
 )
 
 # Loop through the SYMLINKS array and create symlinks

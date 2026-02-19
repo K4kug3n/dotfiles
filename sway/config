@@ -19,21 +19,22 @@ set $menu wofi --show drun
 set $lock swaylock
 
 ### Output configuration
-#
+default_border none
 
 # Left monitor
 output 'Acer Technologies K222HQL T0EEE0018513' {
     position 0 0
     mode 1920x1080@60Hz
-    background /data/wallpapers/WallBank/wallpapers/everforest.jpg fill
 }
 
 # Right monitor
 output 'Ancor Communications Inc ASUS VS247 GALMTF086439' {
     position 1920 0
     mode 1920x1080@60Hz
-    background /data/wallpapers/WallBank/wallpapers/hyprlock.png fill
 }
+
+output * background ./wallpaper.jpg fill
+
 workspace 2 output 'Ancor Communications Inc ASUS VS247 GALMTF086439'
 workspace 1 output 'Acer Technologies K222HQL T0EEE0018513'
 
@@ -231,17 +232,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 

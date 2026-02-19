@@ -1,0 +1,31 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "network", "tray"],
+
+    "clock": {
+        "format": "{:%Y-%m-%d  %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ipaddr}/{cidr}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "interval": 5
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "interval": 5
+    }
+}

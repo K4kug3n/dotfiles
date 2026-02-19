@@ -1,0 +1,52 @@
+/* Reset all rounding for that sharp Arch look */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Roboto", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(17, 17, 17, 0.95);
+    border-bottom: 1px solid #333333;
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: transparent;
+    color: #888888; /* Dimmer for inactive */
+}
+
+#workspaces button.focused {
+    background-color: #333333;
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Center Clock Style */
+#clock {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Right Side Modules */
+#cpu, #memory, #network, #tray {
+    padding: 0 10px;
+    color: #cccccc;
+}
+
+/* Force monochrome: prevents modules from turning red/yellow/green */
+#network.disconnected,
+#cpu.warning, 
+#cpu.critical,
+#memory.warning, 
+#memory.critical {
+    color: #ffffff; 
+    background-color: transparent;
+}
