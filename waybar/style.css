@@ -1,4 +1,5 @@
-/* Reset all rounding for that sharp Arch look */
+@import "../themes/current/color.css";
+
 * {
     border: none;
     border-radius: 0;
@@ -8,45 +9,24 @@
 }
 
 window#waybar {
-    background-color: rgba(17, 17, 17, 0.95);
-    border-bottom: 1px solid #333333;
-    color: #ffffff;
+    background-color: @bg_main; 
+    border-bottom: 1px solid @border_color;
+    color: @text_main;
 }
 
 #workspaces button {
     padding: 0 10px;
     background-color: transparent;
-    color: #888888; /* Dimmer for inactive */
+    color: @text_dim;
 }
 
 #workspaces button.focused {
-    background-color: #333333;
-    color: #ffffff;
-    border-bottom: 2px solid #ffffff;
+    background-color: @focused_bg;
+    color: @accent_color;
+    border-bottom: 2px solid @accent_color;
 }
 
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Center Clock Style */
-#clock {
-    font-weight: bold;
-    color: #ffffff;
-}
-
-/* Right Side Modules */
-#cpu, #memory, #network, #tray {
+#clock, #cpu, #memory, #network {
     padding: 0 10px;
-    color: #cccccc;
-}
-
-/* Force monochrome: prevents modules from turning red/yellow/green */
-#network.disconnected,
-#cpu.warning, 
-#cpu.critical,
-#memory.warning, 
-#memory.critical {
-    color: #ffffff; 
-    background-color: transparent;
+    color: @module_text;
 }

@@ -1,0 +1,7 @@
+@define-color bg_main rgba(46, 52, 64, 0.95);
+@define-color border_color #4C566A;
+@define-color text_main #D8DEE9;
+@define-color text_dim #4C566A;
+@define-color accent_color #88C0D0;
+@define-color focused_bg #434C5E;
+@define-color module_text #E5E9F0;

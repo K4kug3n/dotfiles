@@ -1,0 +1,7 @@
+@define-color bg_main rgba(17, 17, 17, 0.95);
+@define-color border_color #333333;
+@define-color text_main #ffffff;
+@define-color text_dim #888888;
+@define-color accent_color #ffffff;
+@define-color focused_bg #333333;
+@define-color module_text #cccccc;

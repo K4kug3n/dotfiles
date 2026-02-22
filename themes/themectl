@@ -1,0 +1,24 @@
+#!/bin/bash
+
+THEME=$1
+THEME_DIR="$HOME/.config/themes"
+
+if [ ! -d "$THEME_DIR/$THEME" ]; then
+    echo "Theme $THEME not found!"
+    exit 1
+fi
+
+# 1. Swap the 'current' symlink
+ln -sfn "$THEME_DIR/$THEME" "$THEME_DIR/current"
+
+# 2. Update the Wallpaper symlink (assuming your wall is inside the theme folder)
+ln -sf "$THEME_DIR/$THEME/wallpaper.jpg" "$HOME/.config/sway/wallpaper.jpg"
+
+# 3. Reload everything
+swaymsg reload
+
+# killall -USR2 waybar  # Reloads waybar CSS without restarting
+# swaymsg "exec waybar"
+
+# For Kitty, existing windows need a signal:
+killall -USR1 kitty
