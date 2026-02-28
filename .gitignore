@@ -1,4 +1,5 @@
 ./themes/current
+./sway/config.local
 
 *.jpg
 *.png

@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include ./config.local
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -16,52 +18,22 @@ set $right l
 
 set $term kitty
 set $menu wofi --show drun
-set $lock swaylock
+set $lock swaylock -c 000000
 
 ### Output configuration
 default_border none
 
-# Left monitor
-output 'Acer Technologies K222HQL T0EEE0018513' {
-    position 0 0
-    mode 1920x1080@60Hz
-}
-
-# Right monitor
-output 'Ancor Communications Inc ASUS VS247 GALMTF086439' {
-    position 1920 0
-    mode 1920x1080@60Hz
-}
-
 output * background ./wallpaper.jpg fill
 
-workspace 2 output 'Ancor Communications Inc ASUS VS247 GALMTF086439'
-workspace 1 output 'Acer Technologies K222HQL T0EEE0018513'
-
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+    timeout 300 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    timeout 310 'swaylock -f -c 000000' \
+    before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+
 input type:keyboard {
      xkb_layout eu,us,fr
      xkb_numlock on
@@ -162,8 +134,8 @@ input type:keyboard {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    # bindsym $mod+s layout stacking
+    # bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -235,4 +207,4 @@ bar {
     swaybar_command waybar
 }
 
-
+exec wlsunset -l 46.16 -L 6.14 -t 1500 -T 6500
