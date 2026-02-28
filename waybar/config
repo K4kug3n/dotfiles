@@ -4,7 +4,7 @@
     "height": 26,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "network", "tray"],
+    "modules-right": ["cpu", "memory", "network", "bluetooth", "tray"],
 
     "clock": {
         "format": "{:%Y-%m-%d  %H:%M}",
@@ -27,5 +27,16 @@
     "memory": {
         "format": "{}% ",
         "interval": 5
+    },
+
+    "bluetooth": {
+          "format": " {status}",
+          "format-disabled": "󰂲", // Icon for Bluetooth off
+          "format-connected": " {device_alias}",
+          "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+          "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+          "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+          "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+          "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     }
 }
