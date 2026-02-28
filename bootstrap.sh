@@ -4,6 +4,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 declare -A SYMLINKS=(
     [".bash_aliases"]=".bash_aliases"
+    [".zshrc"]=".zshrc"
 
     ["tmux"]=".config/tmux"
     ["nvim"]=".config/nvim"
